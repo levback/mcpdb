@@ -1,0 +1,13 @@
+rules:
+  - subjects: ["engineer", "analyst"]
+    actions: ["db_query", "db_introspect", "db_ping", "db_list_profiles"]
+    resources: ["prod_*", "staging_*", "analytics"]
+    effect: allow
+  - subjects: ["engineer", "analyst"]
+    actions: ["db_write", "db_admin"]
+    resources: ["*"]
+    effect: deny
+  - subjects: ["*"]
+    actions: ["*"]
+    resources: ["*"]
+    effect: deny

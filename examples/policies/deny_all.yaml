@@ -1,0 +1,5 @@
+rules:
+  - subjects: ["*"]
+    actions: ["*"]
+    resources: ["*"]
+    effect: deny

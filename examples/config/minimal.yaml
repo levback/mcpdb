@@ -1,0 +1,17 @@
+profiles:
+  - name: local_sqlite
+    backend: sqlite
+    mode: read_only
+    allow_writes: false
+    dsn: sqlite:///tmp/mcpdb.db
+
+security:
+  auth_enabled: false
+  bind_address: 127.0.0.1
+
+limits:
+  query_timeout_ms: 30000
+  max_rows: 10000
+
+mcp:
+  transport: stdio

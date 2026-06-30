@@ -1,0 +1,192 @@
+{
+  "$defs": {
+    "Limits": {
+      "properties": {
+        "max_payload_bytes": {
+          "default": 5000000,
+          "title": "Max Payload Bytes",
+          "type": "integer"
+        },
+        "max_rows": {
+          "default": 10000,
+          "title": "Max Rows",
+          "type": "integer"
+        },
+        "query_timeout_ms": {
+          "default": 30000,
+          "title": "Query Timeout Ms",
+          "type": "integer"
+        }
+      },
+      "title": "Limits",
+      "type": "object"
+    },
+    "McpSettings": {
+      "properties": {
+        "transport": {
+          "default": "stdio",
+          "enum": [
+            "stdio",
+            "http"
+          ],
+          "title": "Transport",
+          "type": "string"
+        }
+      },
+      "title": "McpSettings",
+      "type": "object"
+    },
+    "Profile": {
+      "properties": {
+        "allow_writes": {
+          "default": false,
+          "title": "Allow Writes",
+          "type": "boolean"
+        },
+        "backend": {
+          "enum": [
+            "postgres",
+            "mysql",
+            "sqlite",
+            "mongodb"
+          ],
+          "title": "Backend",
+          "type": "string"
+        },
+        "database": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Database"
+        },
+        "dsn": {
+          "anyOf": [
+            {
+              "format": "password",
+              "type": "string",
+              "writeOnly": true
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dsn"
+        },
+        "host": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Host"
+        },
+        "mode": {
+          "default": "read_only",
+          "enum": [
+            "read_only",
+            "read_write"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "password": {
+          "anyOf": [
+            {
+              "format": "password",
+              "type": "string",
+              "writeOnly": true
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Password"
+        },
+        "port": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Port"
+        },
+        "username": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Username"
+        }
+      },
+      "required": [
+        "name",
+        "backend"
+      ],
+      "title": "Profile",
+      "type": "object"
+    },
+    "Security": {
+      "properties": {
+        "auth_enabled": {
+          "default": false,
+          "title": "Auth Enabled",
+          "type": "boolean"
+        },
+        "bind_address": {
+          "default": "127.0.0.1",
+          "title": "Bind Address",
+          "type": "string"
+        }
+      },
+      "title": "Security",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "limits": {
+      "$ref": "#/$defs/Limits"
+    },
+    "mcp": {
+      "$ref": "#/$defs/McpSettings"
+    },
+    "profiles": {
+      "items": {
+        "$ref": "#/$defs/Profile"
+      },
+      "title": "Profiles",
+      "type": "array"
+    },
+    "security": {
+      "$ref": "#/$defs/Security"
+    }
+  },
+  "title": "McpDbSettings",
+  "type": "object"
+}

@@ -1,0 +1,8 @@
+[mutmut]
+paths_to_mutate = ["src/mcpdb/db", "src/mcpdb/server"]
+tests_dir = "tests"
+runner = "uv run pytest -q"
+also_copy = ["pyproject.toml", "uv.lock"]
+
+[threshold]
+min_kill_ratio = 75

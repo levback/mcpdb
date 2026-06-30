@@ -1,0 +1,29 @@
+profiles:
+  - name: reporting_pg
+    backend: postgres
+    mode: read_only
+    allow_writes: false
+    host: localhost
+    port: 5432
+    database: reporting
+    username: app_reader
+    password: ${env:PG_PASSWORD}
+
+  - name: analytics_mongo
+    backend: mongodb
+    mode: read_only
+    allow_writes: false
+    host: localhost
+    port: 27017
+    database: analytics
+
+security:
+  auth_enabled: true
+  bind_address: 0.0.0.0
+
+limits:
+  query_timeout_ms: 45000
+  max_rows: 50000
+
+mcp:
+  transport: stdio

@@ -1,0 +1,7 @@
+services:
+  mcpdb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mcpdb:dev
+    command: ["python3", "-m", "mcpdb"]
