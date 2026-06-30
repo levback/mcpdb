@@ -1,0 +1,10 @@
+profiles:
+  - name: main
+    backend: sqlite
+    dsn: sqlite+aiosqlite:///./example.db
+limits:
+  query_timeout_ms: 5000
+  max_rows: 200
+security:
+  auth_enabled: false
+  bind_host: 127.0.0.1

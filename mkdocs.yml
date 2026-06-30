@@ -1,0 +1,39 @@
+site_name: mcpdb
+site_description: MCP Database Server for secure multi-backend access
+site_url: https://github.com/levback/mcpdb
+repo_url: https://github.com/levback/mcpdb
+repo_name: levback/mcpdb
+edit_uri: edit/main/
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Install: install.md
+  - Quickstart: quickstart.md
+  - Architecture: architecture.md
+  - Security Model: security-model.md
+  - Security Notes: security/SECURITY.md
+  - CLI Reference: cli/usage.md
+  - Config Reference: reference/config.md
+  - Recipes:
+      - Claude Desktop: recipes/claude-desktop.md
+      - Cursor: recipes/cursor.md
+      - LangChain: recipes/langchain.md
+  - ADRs:
+      - Why MCP: adr/0001-why-mcp.md
+      - Locked Stack: adr/0002-locked-stack.md
+      - Security Defaults: adr/0003-security-defaults.md
+  - FAQ: faq.md

@@ -1,0 +1,25 @@
+services:
+  mcpdb:
+    image: ghcr.io/levback/mcpdb:0.1.0
+    restart: always
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+    user: "65532:65532"
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      MCPDB_CONFIG_FILE: /config/mcpdb.yaml
+      MCPDB_AUTH_ENABLED: "true"
+      MCPDB_BIND_HOST: 0.0.0.0
+    volumes:
+      - ./config:/config:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(); s.settimeout(1); s.connect(('127.0.0.1',8080)); s.close()"]
+      interval: 30s
+      timeout: 3s
+      retries: 3

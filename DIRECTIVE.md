@@ -1,5 +1,5 @@
 filepath: DIRECTIVE.md
-<!-- ACTIVE_PHASE: 11 -->
+<!-- ACTIVE_PHASE: 12 -->
 <!-- MODE: IMPLEMENTATION -->
 <!-- Read phases/00-glossary.md FIRST, then phases/<NN>-<phase-name>.md -->
 

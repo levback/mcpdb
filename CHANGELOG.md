@@ -90,3 +90,19 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 - Files modified: CHANGELOG.md, pyproject.toml, uv.lock
 - Gate results: uv sync PASS; ruff PASS; ruff format PASS; mypy PASS; bandit PASS (no issues identified); pytest PASS with 572 tests (6 skipped) and 91.27% branch coverage; cli help PASS
 - Follow-ups: Starlette testclient deprecation warning for httpx/httpx2 and legacy runpy module warnings remain; optional atheris-based fuzz execution remains environment-dependent and is intentionally guarded in the fuzz harnesses
+
+### Phase 11
+
+- Duration estimate: 240 minutes
+- Files added: mkdocs.yml, docs/index.md, docs/install.md, docs/quickstart.md, docs/architecture.md, docs/security-model.md, docs/reference/config.md, docs/recipes/claude-desktop.md, docs/recipes/cursor.md, docs/recipes/langchain.md, docs/faq.md, docs/adr/0001-why-mcp.md, docs/adr/0002-locked-stack.md, docs/adr/0003-security-defaults.md, examples/01-minimal/README.md, examples/01-minimal/docker-compose.yml, examples/01-minimal/mcpdb.yaml, examples/01-minimal/smoke.sh, examples/02-prod-http-oauth/README.md, examples/02-prod-http-oauth/docker-compose.yml, examples/02-prod-http-oauth/mcpdb.yaml, examples/02-prod-http-oauth/policy.yaml, examples/03-multimodal-audit/README.md, examples/03-multimodal-audit/docker-compose.yml, examples/03-multimodal-audit/mcpdb.yaml, examples/03-multimodal-audit/verify_audit_chain.sh, scripts/bootstrap.sh, scripts/release.sh, tests/unit/test_phase11_docs.py
+- Files modified: .pre-commit-config.yaml, README.md, docs/cli/usage.md, pyproject.toml, uv.lock, CHANGELOG.md
+- Gate results: uv sync PASS; ruff PASS; ruff format PASS; mypy PASS; bandit PASS (no issues identified); pytest PASS with 585 tests (7 skipped) and 91.27% branch coverage; cli help PASS; mkdocs build --strict PASS
+- Follow-ups: Material for MkDocs emits a non-fatal upstream ecosystem warning banner during build; Starlette testclient deprecation warning for httpx/httpx2 and legacy runpy module warnings remain
+
+### Phase 12
+
+- Duration estimate: 260 minutes
+- Files added: .github/workflows/release.yml, docker-compose.prod.yml, docs/security/THREAT_MODEL.md, docs/security/RELEASE_CHECKLIST.md, scripts/sign.sh, tests/release/test_sbom_valid.py, tests/release/test_signatures_valid.py, tests/release/test_dockerfile_hardening.py, sbom/.gitkeep, attestations/.gitkeep
+- Files modified: Dockerfile, pyproject.toml, scripts/release.sh, CHANGELOG.md, uv.lock
+- Gate results: uv sync PASS; ruff PASS; ruff format PASS; mypy PASS; bandit PASS (no issues identified); pytest PASS with 596 tests (8 skipped) and 91.27% branch coverage; cli help PASS
+- Follow-ups: keyless cosign signing and release workflow need a real tagged run in GitHub Actions to generate and verify live attestations; secondary maintainer sign-off in threat model remains pending

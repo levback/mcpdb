@@ -1,0 +1,5 @@
+profiles:
+  primary:
+    allow_reads: true
+    allow_writes: false
+    allow_admin: false

@@ -12,7 +12,7 @@ COPY src ./src
 
 RUN uv sync --frozen --no-dev --no-editable
 
-FROM gcr.io/distroless/python3-debian12:nonroot
+FROM gcr.io/distroless/static-debian12:nonroot
 
 ENV PATH="/app/.venv/bin:${PATH}"
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -20,7 +20,10 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
+COPY --from=builder /usr/local/bin/python3.13 /usr/local/bin/python3.13
+COPY --from=builder /usr/local/lib/python3.13 /usr/local/lib/python3.13
+COPY --from=builder /usr/local/lib/libpython3.13.so.1.0 /usr/local/lib/libpython3.13.so.1.0
 COPY --from=builder --chown=65532:65532 /app/.venv /app/.venv
 
 USER 65532:65532
-CMD ["python3", "-m", "mcpdb"]
+ENTRYPOINT ["/usr/local/bin/python3.13", "-m", "mcpdb"]

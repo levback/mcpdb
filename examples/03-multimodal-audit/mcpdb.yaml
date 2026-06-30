@@ -1,0 +1,23 @@
+profiles:
+  - name: pg_main
+    backend: postgres
+    host: postgres
+    port: 5432
+    database: app
+    username: mcpdb
+    password: ${env:PG_PASSWORD}
+    mode: read_only
+  - name: mongo_main
+    backend: mongodb
+    uri: mongodb://mongo:27017
+    database: app
+    mode: read_only
+limits:
+  query_timeout_ms: 4000
+  max_rows: 400
+security:
+  auth_enabled: true
+  bind_host: 0.0.0.0
+audit:
+  chain_enabled: true
+  chain_key_ref: ${env:AUDIT_CHAIN_KEY}
